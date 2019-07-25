@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_Insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="插入"/>
+
+    <Button
+        android:id="@+id/btn_InsertOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_Insert"
+        android:layout_alignBaseline="@+id/btn_Insert"
+        android:layout_marginLeft="20dp"
+        android:text="判同插入"/>
+
+    <Button
+        android:id="@+id/btn_Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_Insert"
+        android:layout_below="@+id/btn_Insert"
+        android:layout_marginTop="20dp"
+        android:text="删除"/>
+
+    <Button
+        android:id="@+id/btn_DeleteSome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_Delete"
+        android:layout_toRightOf="@+id/btn_Delete"
+        android:layout_marginTop="20dp"
+        android:text="批量删除"/>
+
+    <Button
+        android:id="@+id/btn_Query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_Delete"
+        android:layout_below="@+id/btn_Delete"
+        android:layout_marginTop="20dp"
+        android:text="查询"/>
+
+    <Button
+        android:id="@+id/btn_QueryByColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_Query"
+        android:layout_toRightOf="@+id/btn_Query"
+        android:layout_marginTop="20dp"
+        android:text="查询"/>
+
+    <Button
+        android:id="@+id/btn_QueryCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_QueryByColumn"
+        android:layout_toRightOf="@+id/btn_QueryByColumn"
+        android:layout_marginTop="20dp"
+        android:text="批量统计数据"/>
+
+</RelativeLayout>
