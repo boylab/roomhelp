@@ -21,7 +21,16 @@
         android:layout_toRightOf="@+id/btn_Insert"
         android:layout_alignBaseline="@+id/btn_Insert"
         android:layout_marginLeft="20dp"
-        android:text="判同插入"/>
+        android:text="插入相同数据"/>
+
+    <Button
+        android:id="@+id/btn_InsertReplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_InsertOther"
+        android:layout_alignBaseline="@+id/btn_Insert"
+        android:layout_marginLeft="20dp"
+        android:text="插入相同数据"/>
 
     <Button
         android:id="@+id/btn_Delete"

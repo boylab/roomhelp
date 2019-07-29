@@ -8,6 +8,9 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.boylab.roomhelp.model.LoginUser;
+import com.boylab.roomhelp.model.Student;
+
+import java.util.List;
 
 /**
  * Author pengle on 2019/7/25 15:48
@@ -17,8 +20,13 @@ import com.boylab.roomhelp.model.LoginUser;
 public interface LoginUserDao extends RoomDao<LoginUser> {
 
     @Override
-    @Insert
     void insert(LoginUser... t);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertReplace(LoginUser... t);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertIgnore(LoginUser... t);
 
     @Override
     @Delete
@@ -26,7 +34,7 @@ public interface LoginUserDao extends RoomDao<LoginUser> {
 
     @Override
     @Query("select * from loginuser" )
-    void query();
+    List<LoginUser> query();
 
     @Override
     @Update(onConflict = OnConflictStrategy.REPLACE)

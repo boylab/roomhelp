@@ -7,6 +7,8 @@ import android.arch.persistence.room.Update;
 
 import com.boylab.roomhelp.model.LoginUser;
 
+import java.util.List;
+
 /**
  * Author pengle on 2019/7/25 16:27
  * Email  pengle609@163.com
@@ -17,7 +19,7 @@ public interface RoomDao<T> {
 
     void delete(T... t);
 
-    void query();
+    List<T> query();
     /*void queryByColumn();
     void queryCount();*/
 
