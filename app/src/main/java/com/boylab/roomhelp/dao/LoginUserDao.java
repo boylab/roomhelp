@@ -20,6 +20,7 @@ import java.util.List;
 public interface LoginUserDao extends RoomDao<LoginUser> {
 
     @Override
+    @Insert
     void insert(LoginUser... t);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -35,6 +36,9 @@ public interface LoginUserDao extends RoomDao<LoginUser> {
     @Override
     @Query("select * from loginuser" )
     List<LoginUser> query();
+
+    @Query("select * from loginuser where loginuser.user = :user" )
+    List<LoginUser> queryByUser(String user);
 
     @Override
     @Update(onConflict = OnConflictStrategy.REPLACE)

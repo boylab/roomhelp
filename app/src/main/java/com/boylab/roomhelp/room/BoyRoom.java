@@ -16,7 +16,7 @@ import com.boylab.roomhelp.model.Teacher;
  * Author pengle on 2019/7/25 15:26
  * Email  pengle609@163.com
  */
-@Database(entities = {LoginUser.class, Teacher.class, Student.class}, version = 2, exportSchema = false)
+@Database(entities = {LoginUser.class, Teacher.class, Student.class}, version = 1, exportSchema = false)
 public abstract class BoyRoom extends RoomDatabase {
 
     private static final String DB_NAME = "BoyRoom.db";
