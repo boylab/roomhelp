@@ -7,8 +7,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import com.boylab.roomhelp.model.AcceptUser;
 import com.boylab.roomhelp.model.LoginUser;
-import com.boylab.roomhelp.model.Student;
 
 import java.util.List;
 
@@ -39,6 +39,39 @@ public interface LoginUserDao extends RoomDao<LoginUser> {
 
     @Query("select * from loginuser where loginuser.user = :user" )
     List<LoginUser> queryByUser(String user);
+
+    @Query("select * from loginuser where loginuser.user like 'label%'" )
+    List<LoginUser> queryLike();
+
+    @Query("select * from loginuser where loginuser.user between \"lable\" AND \"label2\" ")
+    List<LoginUser> queryBetween();
+
+    @Query("select avg(loginuser.createTime) as OrderAverage from loginuser " )
+    long queryAvg();
+
+    @Query("select * from loginuser where loginuser.createTime > (select avg(loginuser.createTime) from loginuser) " )
+    List<LoginUser> queryAboveAvg();
+
+    @Query("select count(loginuser.pwd) from loginuser where loginuser.pwd = \"123456\"" )
+    int queryCount();
+
+    @Query("select loginuser.id from loginuser where loginuser.id = (select min(loginuser.createTime) from loginuser)" )
+    long queryFitst();
+
+    @Query("select loginuser.id from loginuser where loginuser.id = (select max(loginuser.createTime) from loginuser) " )
+    long queryLast();
+
+    @Query("select max(loginuser.createTime) from loginuser " )
+    long queryMax();
+
+    @Query("select min(loginuser.createTime) from loginuser " )
+    long queryMin();
+
+    @Query("select sum(loginuser.id) from loginuser " )
+    int querySum();
+
+    @Query("select loginuser.pwd, sum(loginuser.pwd) from loginuser group by loginuser.pwd" )
+     List<AcceptUser> queryGroupBy();
 
     @Override
     @Update(onConflict = OnConflictStrategy.REPLACE)

@@ -12,9 +12,9 @@ import android.widget.TextView;
  * Author pengle on 2019/7/29 10:45
  * Email  pengle609@163.com
  */
-@Entity(foreignKeys = @ForeignKey(entity = Student.class,
+@Entity/*(foreignKeys = @ForeignKey(entity = Student.class,
                                 parentColumns = {"student_id"},
-                                childColumns = {"name"}))
+                                childColumns = {"name"}))*/
 public class Teacher {
 
     @PrimaryKey(autoGenerate = true)

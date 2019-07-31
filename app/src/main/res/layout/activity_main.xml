@@ -12,69 +12,173 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="插入"/>
+        android:text="插入" />
 
     <Button
         android:id="@+id/btn_InsertOther"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/btn_Insert"
         android:layout_alignBaseline="@+id/btn_Insert"
         android:layout_marginLeft="20dp"
-        android:text="插入相同数据"/>
+        android:layout_toRightOf="@+id/btn_Insert"
+        android:text="插入时忽略" />
 
     <Button
         android:id="@+id/btn_InsertReplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/btn_InsertOther"
         android:layout_alignBaseline="@+id/btn_Insert"
         android:layout_marginLeft="20dp"
-        android:text="插入相同数据"/>
+        android:layout_toRightOf="@+id/btn_InsertOther"
+        android:text="插入时覆盖" />
 
     <Button
         android:id="@+id/btn_Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_Insert"
         android:layout_below="@+id/btn_Insert"
+        android:layout_alignLeft="@+id/btn_Insert"
         android:layout_marginTop="20dp"
-        android:text="删除"/>
+        android:text="删除" />
 
     <Button
         android:id="@+id/btn_DeleteSome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btn_Delete"
-        android:layout_toRightOf="@+id/btn_Delete"
         android:layout_marginTop="20dp"
-        android:text="批量删除"/>
+        android:layout_toRightOf="@+id/btn_Delete"
+        android:text="批量删除"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_Query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_Delete"
         android:layout_below="@+id/btn_Delete"
+        android:layout_alignLeft="@+id/btn_Delete"
         android:layout_marginTop="20dp"
-        android:text="查询"/>
+        android:text="查询"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_QueryByColumn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btn_Query"
-        android:layout_toRightOf="@+id/btn_Query"
         android:layout_marginTop="20dp"
-        android:text="查询"/>
+        android:layout_toRightOf="@+id/btn_Query"
+        android:text="传参查询"
+        android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/btn_QueryCount"
+        android:id="@+id/btn_LikeQuery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btn_QueryByColumn"
-        android:layout_toRightOf="@+id/btn_QueryByColumn"
         android:layout_marginTop="20dp"
-        android:text="批量统计数据"/>
+        android:layout_toRightOf="@+id/btn_QueryByColumn"
+        android:text="Like查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_BetweenQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Query"
+        android:layout_alignLeft="@+id/btn_Query"
+        android:layout_marginTop="20dp"
+        android:text="Between查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_AvgQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_BetweenQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_BetweenQuery"
+        android:text="Avg查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_AboveAvgQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_BetweenQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_AvgQuery"
+        android:text="AboveAvg查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_CountQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_BetweenQuery"
+        android:layout_alignLeft="@+id/btn_BetweenQuery"
+        android:layout_marginTop="20dp"
+        android:text="Count查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_FirstQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_CountQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_CountQuery"
+        android:text="First查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_LastQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_CountQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_FirstQuery"
+        android:text="Last查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_MaxQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_CountQuery"
+        android:layout_alignLeft="@+id/btn_CountQuery"
+        android:layout_marginTop="20dp"
+        android:text="Max查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_MinQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_MaxQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_MaxQuery"
+        android:text="Min查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_SumQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_MaxQuery"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/btn_MinQuery"
+        android:text="Sum查询"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_GroupByQuery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_MaxQuery"
+        android:layout_alignLeft="@+id/btn_MaxQuery"
+        android:layout_marginTop="20dp"
+        android:text="GroupBy查询"
+        android:textAllCaps="false" />
 
 </RelativeLayout>

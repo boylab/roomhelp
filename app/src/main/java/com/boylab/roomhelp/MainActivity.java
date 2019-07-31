@@ -1,5 +1,6 @@
 package com.boylab.roomhelp;
 
+import android.arch.persistence.room.Query;
 import android.arch.persistence.room.RoomDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -131,12 +132,9 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-                        LoginUser loginUser = new LoginUser();
-                        loginUser.setUser("boylab");
-                        loginUser.setPwd("123456");
-                        loginUser.setCreateTime(System.currentTimeMillis());
-
-                        loginUserDao.delete(loginUser);
+                        query = loginUserDao.query();
+                        Log.i(">>>microape>>", ">>>删除: "+query.get(0).toString());
+                        loginUserDao.delete(query.get(0));
 
                         query = loginUserDao.query();
                     }
@@ -154,30 +152,238 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_DeleteSome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TODO: 2019/7/31 批量删除
             }
         });
 
         findViewById(R.id.btn_Query).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        loginUserDao.query();
+                    }
 
+                    @Override
+                    public void onPostResult() {
 
+                    }
+                });
             }
         });
 
         findViewById(R.id.btn_QueryByColumn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
 
+                    }
 
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
             }
         });
 
-        findViewById(R.id.btn_QueryCount).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_LikeQuery).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
 
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_BetweenQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_AvgQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryAvg = loginUserDao.queryAvg();
+                        Log.i(">>>microape>>", ">>>run: queryAvg = "+queryAvg);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_AboveAvgQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        query = loginUserDao.queryAboveAvg();
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>aboveAvg: "+loginUser2.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_CountQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryCount = loginUserDao.queryCount();
+                        Log.i(">>>microape>>", ">>>run: queryCount = "+queryCount);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_FirstQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryFirst = loginUserDao.queryFitst();
+                        Log.i(">>>microape>>", ">>>run: queryFirst = "+queryFirst);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_LastQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryLast = loginUserDao.queryLast();
+                        Log.i(">>>microape>>", ">>>run: queryLast = "+queryLast);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_MaxQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryMax = loginUserDao.queryMin();
+                        Log.i(">>>microape>>", ">>>run: queryMax = "+queryMax);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_MinQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long queryMin = loginUserDao.queryMin();
+                        Log.i(">>>microape>>", ">>>run: queryMin = "+queryMin);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_SumQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        long querySum = loginUserDao.querySum();
+                        Log.i(">>>microape>>", ">>>run: querySum = "+querySum);
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_GroupByQuery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+
+                    }
+
+                    @Override
+                    public void onPostResult() {
+
+                    }
+                });
             }
         });
 
