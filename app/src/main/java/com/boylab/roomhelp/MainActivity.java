@@ -1,13 +1,12 @@
 package com.boylab.roomhelp;
 
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.RoomDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import com.boylab.roomhelp.dao.LoginUserDao;
+import com.boylab.roomhelp.model.AcceptUser;
 import com.boylab.roomhelp.model.LoginUser;
 import com.boylab.roomhelp.room.BoyRoom;
 import com.boylab.roomhelp.utils.ThreadSwitch;
@@ -152,7 +151,22 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_DeleteSome).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2019/7/31 批量删除
+                new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
+                    @Override
+                    public void onBackground() {
+                        // TODO: 2019/8/1 联级删除
+
+                        query = loginUserDao.query();
+                    }
+
+                    @Override
+                    public void onPostResult() {
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+loginUser2.toString());
+                        }
+                    }
+                });
+
             }
         });
 
@@ -162,7 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-                        loginUserDao.query();
+                        query = loginUserDao.query();
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+loginUser2.toString());
+                        }
                     }
 
                     @Override
@@ -179,7 +196,10 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-
+                        query = loginUserDao.queryByUser("boylab");
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+loginUser2.toString());
+                        }
                     }
 
                     @Override
@@ -196,7 +216,10 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-
+                        query = loginUserDao.queryLike();
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+loginUser2.toString());
+                        }
                     }
 
                     @Override
@@ -213,7 +236,10 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-
+                        query = loginUserDao.queryBetween();
+                        for (LoginUser loginUser2:query) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+loginUser2.toString());
+                        }
                     }
 
                     @Override
@@ -230,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-                        long queryAvg = loginUserDao.queryAvg();
+                        double queryAvg = loginUserDao.queryAvg();
                         Log.i(">>>microape>>", ">>>run: queryAvg = "+queryAvg);
                     }
 
@@ -322,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
                 new ThreadSwitch().onSwitch(new ThreadSwitch.ThreadListener() {
                     @Override
                     public void onBackground() {
-                        long queryMax = loginUserDao.queryMin();
+                        long queryMax = loginUserDao.queryMax();
                         Log.i(">>>microape>>", ">>>run: queryMax = "+queryMax);
                     }
 
@@ -377,6 +403,12 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onBackground() {
 
+                        // TODO: 2019/8/1 最后一个未成功 、待解决
+                        List<AcceptUser> acceptUsers = loginUserDao.queryGroupBy();
+                        for (AcceptUser acceptUser:acceptUsers) {
+                            Log.i(">>>microape>>", ">>>run:查询 "+acceptUser.toString());
+                        }
+                        
                     }
 
                     @Override

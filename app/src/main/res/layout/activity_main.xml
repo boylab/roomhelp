@@ -48,7 +48,7 @@
         android:layout_alignBaseline="@+id/btn_Delete"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/btn_Delete"
-        android:text="批量删除"
+        android:text="联级删除"
         android:textAllCaps="false" />
 
     <Button

@@ -40,37 +40,37 @@ public interface LoginUserDao extends RoomDao<LoginUser> {
     @Query("select * from loginuser where loginuser.user = :user" )
     List<LoginUser> queryByUser(String user);
 
-    @Query("select * from loginuser where loginuser.user like 'label%'" )
+    @Query("select * from loginuser where loginuser.user like 'boylab%'" )
     List<LoginUser> queryLike();
 
-    @Query("select * from loginuser where loginuser.user between \"lable\" AND \"label2\" ")
+    @Query("select * from loginuser where loginuser.user between \"boylab\" AND \"boylab2\" ")
     List<LoginUser> queryBetween();
 
-    @Query("select avg(loginuser.createTime) as OrderAverage from loginuser " )
-    long queryAvg();
+    @Query("select avg(loginuser.id) as OrderAverage from loginuser " )
+    double queryAvg();
 
-    @Query("select * from loginuser where loginuser.createTime > (select avg(loginuser.createTime) from loginuser) " )
+    @Query("select * from loginuser where loginuser.id > (select avg(loginuser.id) from loginuser) " )
     List<LoginUser> queryAboveAvg();
 
-    @Query("select count(loginuser.pwd) from loginuser where loginuser.pwd = \"123456\"" )
+    @Query("select count(loginuser.pwd) from loginuser where loginuser.pwd = \"111111\"" )
     int queryCount();
 
-    @Query("select loginuser.id from loginuser where loginuser.id = (select min(loginuser.createTime) from loginuser)" )
+    @Query("select loginuser.id from loginuser where loginuser.id = (select min(loginuser.id) from loginuser)" )
     long queryFitst();
 
-    @Query("select loginuser.id from loginuser where loginuser.id = (select max(loginuser.createTime) from loginuser) " )
+    @Query("select loginuser.id from loginuser where loginuser.id = (select max(loginuser.id) from loginuser) " )
     long queryLast();
 
-    @Query("select max(loginuser.createTime) from loginuser " )
+    @Query("select max(loginuser.id) from loginuser " )
     long queryMax();
 
-    @Query("select min(loginuser.createTime) from loginuser " )
+    @Query("select min(loginuser.id) from loginuser " )
     long queryMin();
 
     @Query("select sum(loginuser.id) from loginuser " )
     int querySum();
 
-    @Query("select loginuser.pwd, sum(loginuser.pwd) from loginuser group by loginuser.pwd" )
+    @Query("select loginuser.pwd, SUM(loginuser.id) from loginuser group by loginuser.pwd" )
      List<AcceptUser> queryGroupBy();
 
     @Override
